@@ -1,7 +1,11 @@
 const express = require('express');
 const app = express();
 
-app.listen(8080, () => {
-  console.log('Server online');
+const db = require('./models');
+
+db.sequelize.sync().then(() => {
+  app.listen(8080, () => {
+    console.log('Server online');
+  });
 });
 
